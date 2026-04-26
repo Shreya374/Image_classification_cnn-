@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Models & artifacts (too large for git)
+models/*.keras
+models/*.h5
+models/*.pt
+models/*.pth
+
+# Data (don't commit your dataset)
+data/train/
+data/val/
+data/test/
+
+# Results
+results/*.png
+results/*.json
+results/*.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
