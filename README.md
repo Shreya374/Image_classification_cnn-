@@ -1,8 +1,11 @@
 # Image Classification with CNN
+<img width="1150" height="613" alt="46151Deep_Learning_Software_DE_1380x735px_1150x_" src="https://github.com/user-attachments/assets/4d540b44-501f-4bd2-83f4-b7fc381b73bb" />
 
-A deep learning project that classifies images into custom categories using Convolutional Neural Networks. Built primarily with **TensorFlow/Keras**, with **PyTorch** explored for benchmarking and **OpenCV** powering the preprocessing pipeline.
 
-> **Best validation accuracy: 92%+** on a custom 3-class image dataset.
+> A deep learning project that classifies images into custom categories using Convolutional Neural Networks.
+> Built primarily with TensorFlow/Keras, with PyTorch explored for benchmarking and OpenCV powering the preprocessing pipeline.
+
+**Best validation accuracy: 92%+ on a custom 3-class image dataset.**
 
 ---
 
@@ -10,7 +13,7 @@ A deep learning project that classifies images into custom categories using Conv
 
 This project builds an end-to-end image classification pipeline — from raw images to a trained CNN model that achieves over 90% validation accuracy. The goal was to learn how convolutional architectures extract spatial features and to compare classical CNN designs (VGG-style, ResNet-inspired) on a small custom dataset.
 
-**What the model does:** given an input image, it predicts which of 3 categories the image belongs to, along with a confidence score.
+Given an input image, the model predicts which of 3 categories the image belongs to, along with a confidence score.
 
 ---
 
@@ -58,7 +61,7 @@ Image-Classification-CNN/
 
 ## Dataset
 
-A **custom 3-class image dataset** collected and curated for this project. Each class folder contains training, validation, and test splits in roughly an 80 / 10 / 10 ratio.
+A custom 3-class image dataset collected and curated for this project. Each class folder contains training, validation, and test splits in roughly an **80 / 10 / 10** ratio.
 
 Class distribution was reviewed during EDA to check for imbalance, and light augmentation was applied to the under-represented class.
 
@@ -71,7 +74,7 @@ All images pass through a consistent preprocessing pipeline before training:
 1. **Resize** — uniform resize to `224 x 224` using `cv2.resize`
 2. **Color conversion** — BGR → RGB via `cv2.cvtColor`
 3. **Normalization** — pixel values scaled to `[0, 1]`
-4. **Augmentation** (training set only) — random horizontal flips, rotations (±15°), brightness shifts, and zoom
+4. **Augmentation** *(training set only)* — random horizontal flips, rotations (±15°), brightness shifts, and zoom
 5. **Batching** — fed to the model via `tf.data.Dataset` for efficient loading
 
 This pipeline ensured the model saw varied versions of each image and helped reduce overfitting on the small dataset.
@@ -80,7 +83,7 @@ This pipeline ensured the model saw varied versions of each image and helped red
 
 ## Model Architecture
 
-The primary model is a **VGG-inspired CNN** built in Keras:
+The primary model is a VGG-inspired CNN built in Keras:
 
 ```
 Input (224 x 224 x 3)
@@ -91,16 +94,21 @@ Input (224 x 224 x 3)
   → Dense(128) → ReLU → Dropout(0.5)
   → Dense(3, softmax)
 ```
+<img width="850" height="603" alt="Block-diagram-of-the-proposed-system-III-CONVOLUTIONAL-NEURAL-NETWORKS-CNNs-3-are-a" src="https://github.com/user-attachments/assets/2408f165-a769-45b1-badf-dc4706c04fc3" />
 
-**Training setup**
+```
 
-- **Loss:** Categorical cross-entropy
-- **Optimizer:** Adam (lr = 1e-3)
-- **Batch size:** 32
-- **Epochs:** 25 (with early stopping on val loss)
-- **Callbacks:** `EarlyStopping`, `ModelCheckpoint`, `ReduceLROnPlateau`
+**Training setup:**
 
-A **ResNet-inspired variant** with skip connections was also tested for comparison.
+| Parameter | Value |
+|---|---|
+| Loss | Categorical cross-entropy |
+| Optimizer | Adam (lr = 1e-3) |
+| Batch size | 32 |
+| Epochs | 25 (with early stopping on val loss) |
+| Callbacks | EarlyStopping, ModelCheckpoint, ReduceLROnPlateau |
+
+A ResNet-inspired variant with skip connections was also tested for comparison.
 
 ---
 
@@ -109,11 +117,10 @@ A **ResNet-inspired variant** with skip connections was also tested for comparis
 | Metric | Score |
 |---|---|
 | Training accuracy | ~95% |
-| **Validation accuracy** | **92%+** |
+| Validation accuracy | 92%+ |
 | Test accuracy | ~91% |
 
-**What was visualized:**
-
+**Visualizations generated:**
 - Training vs validation accuracy/loss curves
 - Confusion matrix on the test set
 - Per-class precision, recall, F1 (via `sklearn.metrics.classification_report`)
@@ -165,13 +172,17 @@ python src/predict.py --image path/to/image.jpg
 - **OpenCV + tf.data** is a fast, lightweight pipeline for small to mid-size image datasets without needing heavy frameworks.
 
 ---
+<img width="814" height="472" alt="Screen-Shot-2017-07-26-at-1 44 58-PM" src="https://github.com/user-attachments/assets/662e63c4-d5d2-479f-b123-862dafb97279" />
+---
+<img width="700" height="363" alt="gcn_web" src="https://github.com/user-attachments/assets/c40c37af-5385-4f06-8b63-933c30b38030" />
+
 
 ## Future Work
 
-- Try **transfer learning** with pretrained MobileNetV2 / EfficientNet backbones
-- Experiment with **model quantization** to shrink size for edge deployment
-- Wrap the model in a **Flask/FastAPI** endpoint for real-time inference
-- Build a small **Streamlit** demo for uploading images and seeing predictions
+- [ ] Try transfer learning with pretrained MobileNetV2 / EfficientNet backbones
+- [ ] Experiment with model quantization to shrink size for edge deployment
+- [ ] Wrap the model in a Flask/FastAPI endpoint for real-time inference
+- [ ] Build a small Streamlit demo for uploading images and seeing predictions
 
 ---
 
@@ -180,7 +191,7 @@ python src/predict.py --image path/to/image.jpg
 **Shreya Pandurang Jagtap**
 B.Tech, Computer Science Engineering — D.Y. Patil Technical Campus, Kolhapur
 
-[GitHub](https://github.com/Shreya374) • [LinkedIn](https://www.linkedin.com/in/shreya-jagtap) • shreyajagtap374@gmail.com
+[GitHub](https://github.com/Shreya374) · [LinkedIn](#) · shreyajagtap374@gmail.com
 
 ---
 
